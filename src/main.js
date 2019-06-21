@@ -3,6 +3,7 @@ import App from './App'
 import router from './router'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
+import './css/index.css'
 import store from './Vuex/store'
 
 Vue.config.productionTip = false

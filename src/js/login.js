@@ -1,21 +1,30 @@
 import { Button } from 'ant-design-vue'
-
 export default {
-    data() {
-        return {
-            id: ''
-        }
-    },
-    components: {
-        Button
-    },
-    methods: {
-        goBack() {
-            // this.$router.push({ name: 'Hello' })
-            this.$router.go(-1)
-        }
-    },
-    mounted() {
-        this.id = this.$route.params.id
+  data () {
+    return {
+      user: '',
+      pass: ''
     }
+  },
+  components: {
+    Button
+  },
+  beforeCreate () {
+    this.form = this.$form.createForm(this)
+  },
+  methods: {
+    handleSubmit (e) {
+      e.preventDefault()
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          this.user = values.user
+          this.pass = values.pass
+        }
+      })
+    },
+    goBack () {
+      // this.$router.push({ name: 'Hello' })
+      this.$router.go(-1)
+    }
+  }
 }
